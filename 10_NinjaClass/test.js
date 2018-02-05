@@ -23,10 +23,26 @@ function Ninja(name){
         return this;
     }
 
+    this.karateChop = function(Ninja){
+        Ninja.health -= 5;
+        console.log(Ninja.name + " lost 5 hp");
+        return this
+    }
+    this.karateKick = function(Ninja){
+        Ninja.health -= 15;
+        console.log(Ninja.name + " lost 15 hp");
+        return this
+    }
+
 }
 
 var ninja1 = new Ninja("William");
+var ninja2 = new Ninja("Edgardo")
 
 ninja1.sayName();
 ninja1.showStats();
-// console.log(ninja1);
+
+ninja1.karateChop(ninja2);
+console.log(ninja2.health);
+ninja1.karateKick(ninja2);
+console.log(ninja2.health);
