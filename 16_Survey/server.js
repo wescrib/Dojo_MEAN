@@ -4,11 +4,12 @@ var session = require("express-session");
 var path = require("path");
 
 var app = express();
-app.use(session({secret: "funtime"}));
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
+app.use(session({secret: "funtime"}));
 
-app.set(bodyParser.urlencoded({extended:true}));
+
+app.use(bodyParser.urlencoded({extended:true}));
 
 app.get("/", function(req,res){
 
@@ -16,16 +17,17 @@ app.get("/", function(req,res){
 });
 
 app.post("/process", function(req,res){
-    // req.session.name = req.body.name;
-    // req.session.location = req.body.location;
-    // req.session.language = req.body.language;
-    // req.session.comment = req.body.comment;
+    req.session.name = req.body.name;
+    req.session.location = req.body.location;
+    req.session.language = req.body.language;
+    req.session.comment = req.body.comment;
+    req.session.allInfo = req.body
     console.log(req.body);
     res.redirect("/success");
 });
 
 app.get("/success", function(req,res){
-    res.render("submitted");
+    res.render("submitted",{post: req.session.allInfo});
 });
 
 app.listen(8000,function(){
