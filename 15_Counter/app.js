@@ -24,6 +24,11 @@ app.get("/double", function(req,res){
     res.redirect("/")
 })
 
+app.get("/reset", function(req,res){
+    req.session.count = 0;
+    res.redirect("/");
+})
+
 app.listen(8000, function(){
     console.log("PORT 8000 is on");
 })
