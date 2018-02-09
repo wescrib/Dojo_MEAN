@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="addPost" method="post">
+        <p><input type="text" placeholder="name" name="name"></p>
+        <p><textarea name="content" placeholder="Leave a message!!" cols="30" rows="10"></textarea></p>
+        <input type="submit" value="Submit">
+    </form>
+
+    <% posts.forEach(function(post){ %>
+        <h2><%= post.content %></h2>
+        <p><%= post.name %></p>
+        <form action="/posts/<%= post.id %>" method="post">
+            <p><input type="text" placeholder="name" name="name"></p>
+            <p><textarea name="content" placeholder="Leave a comment!!" cols="50" rows="5"></textarea></p>
+            <input type="submit" value="Submit">
+        </form>
+        <% post.comments.forEach(function(comment){ %>
+            <p><%= comment.content %></p>
+            <p><%= comment.name %></p>
+        <% }); %>
+    <% }); %>
+    
+</body>
+</html>
