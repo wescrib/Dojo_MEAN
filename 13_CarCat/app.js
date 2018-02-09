@@ -18,7 +18,7 @@ var server = http.createServer(function(req, res){
         res.end();
         });
     }
-    else if(req.url === "/car/new"){
+    else if(req.url === "/car/new/"){
         fs.readFile("./views/newcar.html","utf8", function(errors, contents){
             res.writeHead(200, {"Content-Type" : "text/html"});
         res.write(contents);

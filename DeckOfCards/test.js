@@ -1,51 +1,6 @@
-function leadBootcamp(language, leader){
-    var outcome = leader(language);
-    console.log(outcome);
+console.log(test(3));
+
+var test = function(num){
+    return num*3;
 }
-function Mike(language){
-  var languages={
-    'javascript':'successful leader',
-    'PHP':'successful leader',
-    'Python':'successful leader',
-    'Ruby':'successful leader',
-  }
-  if(languages[language]){
-    return languages[language];
-  }
-  else {
-    return "maybe not yet";
-  }
-}
-function Charlie(language){
-  var languages={
-    'javascript':'successful leader',
-    'PHP':'successful leader',
-    'Python':'successful leader',
-    'Ruby':'successful leader',
-  }
-  if(languages[language]){
-    return languages[language];
-  }
-  else {
-    return "maybe not yet";
-  }
-}
-function Jimmy(language){
-  var languages={
-    'javascript':'successful leader',
-    'PHP':'successful leader',
-    'Python':'successful leader',
-    'Ruby':'successful leader',
-    'iOS':'successful leader',
-    'java_android':'successful leader',
-  }
-  if(languages[language]){
-    return languages[language];
-  }
-  else {
-    return "maybe not yet";
-  }
-}
-leadBootcamp('Python', Mike);
-leadBootcamp('java_android', Charlie);
-leadBootcamp('java_android', Jimmy);
+
