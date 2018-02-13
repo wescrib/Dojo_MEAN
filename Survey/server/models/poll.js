@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 var PollSchema = new mongoose.Schema({
-    name: {
+    question: {
         type: String,
         required: [true, "Question must be at least 10 characters"],
         minlength: [10, "Question must be at least 10 characters"]

@@ -17,7 +17,7 @@ class UsersController {
                 })
             } else {
                 req.session.user_id = user._id;                 //putting user in session
-                return res.json(user);                                 //user is logged in if name is in db
+                return res.json(user);                          //user is logged in if name is in db
             }
         })
     }
