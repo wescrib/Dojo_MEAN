@@ -6,11 +6,13 @@ var port = 8000;
 var bodyParser = require("body-parser");
 // app.use(express.static(__dirname + "/client/dist"));
 app.use(bodyParser.json());
-app.use(session({
-    secret: "funtime",
-    resave: false,
-    saveUnintialized: true
+app.use(session({               //dont know
+    secret: "funtime",          //what this
+    resave: false,              //does
+    saveUnintialized: true      //at all
 }))
+
+//dont know what this line does either
 app.use(morgan("tiny"));
 
 

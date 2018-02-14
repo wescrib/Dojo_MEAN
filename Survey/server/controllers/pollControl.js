@@ -5,7 +5,7 @@ var Poll = mongoose.model("Poll");
 
 class PollsController {
     index(req,res){
-        //for 
+        //for path ,model refers to the name of mongoDB collection name
         Poll.find({}).populate({ path: "user", model:"User" }).exec((err,polls) => {
             if(err){
                 return res.json(err)
@@ -41,6 +41,9 @@ class PollsController {
     }
 
     create(req, res) {
+
+        //create is making a poll and defining all the options at the same time, despite options being in a separate collection
+
         Poll.create({ question: req.body.question, user: req.session.user_id }, (err, poll) => {
             if(err){
                 return res.json(err);
