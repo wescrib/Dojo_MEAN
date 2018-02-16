@@ -8,5 +8,7 @@ module.exports = function(app){
     app.put("/update/:id", Players.update);
 
     app.get("/display", Players.show);
-    app.delete("/remove/:id", Players.destroy)
+
+    app.delete("/remove/:id", Players.destroy);
+    app.get("/findOne/:id", Players.findOne)
 }

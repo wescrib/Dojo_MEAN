@@ -37,6 +37,15 @@ class PlayerController {
             return res.json({"success" : player.name + " has been removed."})
         })
     }
+
+    findOne(req,res){
+        Player.findById(req.params.id, (err, player) => {
+            if(err){
+                return res.json({"error" : "Player does not exist"})
+            }
+            return res.json(player);
+        })
+    }
 }
 
 module.exports = new PlayerController();
