@@ -11,11 +11,12 @@ class PlayerController {
         })
     }
     update(req,res){
-        Player.findById(req.body.id, (err, player) => {
-            player.status = req.body.status;
+        Player.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true}, (err, player) => {
+            console.log("ATTEMPTING TO UPDATE")
                 if(err){
                     return res.json(err);
                 }
+            console.log("UPDATING " + req.params.id)
             return res.json(player);
         })
     }
@@ -25,6 +26,15 @@ class PlayerController {
                 return res.json(err)
             }
             return res.json(players)
+        })
+    }
+
+    destroy(req, res){
+        Player.findByIdAndRemove(req.params.id, (err, player) => {
+            if(err){
+                return res.json(err);
+            }
+            return res.json({"success" : player.name + " has been removed."})
         })
     }
 }
