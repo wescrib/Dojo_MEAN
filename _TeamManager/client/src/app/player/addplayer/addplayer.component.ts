@@ -29,6 +29,7 @@ export class AddplayerComponent implements OnInit {
         player => player.json(),
         error => console.log(error)
       )
+      location.reload();
     } else {
       console.log("did nothing");
     }

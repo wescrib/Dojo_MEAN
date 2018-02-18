@@ -16,5 +16,11 @@ export class PlayerService {
   all(){
     return this._http.get("/display")
   }
+  delete(id: string){
+    return this._http.delete("/remove/" + id)
+  }
+  update(player){
+    return this._http.put("/update/"+player._id, player);
+  }
 
 }

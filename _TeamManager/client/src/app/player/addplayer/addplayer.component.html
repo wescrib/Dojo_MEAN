@@ -9,7 +9,7 @@
 <body>
   <h3>Add Player</h3>
   {{ player | json }}
-  <form (submit)="createPlayer(); location.reload();">
+  <form (submit)="createPlayer()">
     Name: <input type="text" name="player.name" [(ngModel)]="player.name"> <br>
     Preferred Position: <input type="text" name="player.position" [(ngModel)]="player.position">
     <input type="submit" value="Submit">

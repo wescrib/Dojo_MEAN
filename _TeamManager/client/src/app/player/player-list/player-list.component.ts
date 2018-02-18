@@ -20,5 +20,19 @@ export class PlayerListComponent implements OnInit {
     )
   }
 
+  deletePlayer(id: string){
+    var conf = confirm("Are you sure you want to delete this player?");
+    if(conf == true){
+      console.log("player-delete subcomponent>>deleting a player")
+      this._playerService.delete(id).subscribe(
+        res => res.json()
+        // error => console.log(error)
+      )
+      location.reload()
+    }else{
+      console.log("Player was not deleted");
+    }
+    
+  }
 
 }

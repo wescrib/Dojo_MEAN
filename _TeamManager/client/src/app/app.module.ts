@@ -12,6 +12,7 @@ import { AddplayerComponent } from './player/addplayer/addplayer.component';
 import { PlayerListComponent } from './player/player-list/player-list.component';
 import { PlayerDeleteComponent } from './player/player-delete/player-delete.component';
 import { PlayerService } from './player/player.service';
+import { GameComponent } from './game/game.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { PlayerService } from './player/player.service';
     PlayerComponent,
     AddplayerComponent,
     PlayerListComponent,
-    PlayerDeleteComponent
+    PlayerDeleteComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,

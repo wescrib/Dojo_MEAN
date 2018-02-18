@@ -1,0 +1,22 @@
+<p>
+  game works!
+</p>
+<!-- <h1 *ngFor="let player of players">{{player.name}}</h1> -->
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Status</th>
+  </tr>
+  <tr *ngFor="let player of players">
+    <td>{{player.name}}</td>
+    <td><table>
+      <tr>
+        <td><button id="GREEN{{player.status}}" (click)="changeStatus(player._id,1)">Playing</button></td>
+        <td><button id="YELLOW{{player.status}}" (click)="changeStatus(player._id,0)">Undecided</button></td>
+        <td><button id="RED{{player.status}}" (click)="changeStatus(player._id,-1)">Not Playing</button></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+
+<p id="1">HELLLOOOOOOO</p>

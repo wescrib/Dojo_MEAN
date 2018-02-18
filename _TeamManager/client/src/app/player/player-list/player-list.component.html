@@ -1,1 +1,1 @@
-<h1 *ngFor="let player of players">{{player.name}}</h1>
+<h1 *ngFor="let player of players">{{player.name}}<button (click)="deletePlayer(player._id)">Delete</button></h1>
