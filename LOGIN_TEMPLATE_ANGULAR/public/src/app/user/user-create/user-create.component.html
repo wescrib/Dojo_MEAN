@@ -1,0 +1,15 @@
+<div class="registration">
+  <form (submit)="registerUser()">
+    <p class="first_name"><label for="first_name">First Name: </label><input type="text" name="user.first_name" [(ngModel)]="user.first_name"></p>
+
+    <p class="last_name"><label for="last_name">Last Name: </label><input type="text" name="user.last_name" [(ngModel)]="user.last_name"></p>
+
+    <p class="email"><label for="email">Email: </label><input type="text" name="user.email" [(ngModel)]="user.email"></p>
+    
+    <p class="password"><label for="password">Password: </label><input type="password" name="user.password" [(ngModel)]="user.password"></p>
+
+    <p class="confirm_pw"><label for="confirm_pw">Confirm Password: </label><input type="password" name="user.confirm_pw" [(ngModel)]="user.confirm_pw"></p>
+
+    <p class="submit"><input type="submit" value="submit"></p>
+  </form>
+</div>

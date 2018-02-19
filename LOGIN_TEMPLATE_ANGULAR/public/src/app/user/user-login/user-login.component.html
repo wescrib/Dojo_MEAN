@@ -1,0 +1,8 @@
+<div class="login">
+  <form (submit)="loginUser()" name="myForm">
+    <p class="email"><label for="email"> Email: </label><input type="email" name="email" [(ngModel)]="user.email" required ng-minlength="3"></p>
+    <p class="password"><label for="password">Password: </label><input type="password" name="user.password" [(ngModel)]="user.password"></p>
+    <input type="submit" value="Submit">
+
+  </form>
+</div>
