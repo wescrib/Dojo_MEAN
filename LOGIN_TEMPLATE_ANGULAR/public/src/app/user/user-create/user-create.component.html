@@ -1,15 +1,52 @@
 <div class="registration">
-  <form (submit)="registerUser()">
-    <p class="first_name"><label for="first_name">First Name: </label><input type="text" name="user.first_name" [(ngModel)]="user.first_name"></p>
+  <form (submit)="registerUser()" name="registrationForm">
+    <p class="first_name"><label for="first_name">First Name: </label><input type="text" name="first_name" id="first_name" class="form-control" required minlength="2"[(ngModel)]="user.first_name" #fName="ngModel"></p>
+    <div *ngIf="fName.invalid && (fName.dirty || fName.touched)" class="alert alert-danger">
+      <div *ngIf="fName.errors.required">
+        <p style="color: red;">First name is required</p>
+      </div>
+      <div div *ngIf="fName.errors.minlength">
+        <p style="color: red;">First name must be at least 2 characters</p>
+      </div>
+    </div>
 
-    <p class="last_name"><label for="last_name">Last Name: </label><input type="text" name="user.last_name" [(ngModel)]="user.last_name"></p>
+    <p class="last_name"><label for="last_name">Last Name: </label><input type="text" name="last_name" id="last_name" class="form-control" required minlength="2" [(ngModel)]="user.last_name" #lName="ngModel"></p>
+    <div *ngIf="lName.invalid && (lName.dirty || lName.touched)" class="alert alert-danger">
+      <div *ngIf="lName.errors.required">
+        <p style="color: red;">Last Name is required</p>
+      </div>
+      <div *ngIf="lName.errors.minlength">
+        <p style="color: red;">Last Name must be at least 2 characters</p>
+      </div>
+    </div>
 
-    <p class="email"><label for="email">Email: </label><input type="text" name="user.email" [(ngModel)]="user.email"></p>
+    <p class="email"><label for="email">Email: </label><input type="text" name="email" class="form-control" required email [(ngModel)]="user.email" #email="ngModel"></p>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+      <div *ngIf="email.errors.required">
+        <p style="color: red;">Email is required</p>
+      </div>
+      <div *ngIf="email.errors.email">
+        <p style="color: red;">Invalid Email format</p>
+      </div>
+    </div>
     
-    <p class="password"><label for="password">Password: </label><input type="password" name="user.password" [(ngModel)]="user.password"></p>
+    <p class="password"><label for="password">Password: </label><input type="password" name="password" id="password" class="form-control" required [(ngModel)]="user.password" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{8,32}/" #password="ngModel"></p>
+    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+      <div *ngIf="password.errors.required">
+          <p style="color: red;">Password is required</p>
+      </div>
+      <div ng-show="registrationForm.$error.pattern">
+        <p>Password requires at least 1 capital letter and 1 number</p>
+      </div>
+    </div>
 
-    <p class="confirm_pw"><label for="confirm_pw">Confirm Password: </label><input type="password" name="user.confirm_pw" [(ngModel)]="user.confirm_pw"></p>
+    <p class="confirm_pw"><label for="confirm_pw">Confirm Password: </label><input type="password" name="user.confirm_pw" id="confirm" class="form-control" required [(ngModel)]="user.confirm_pw" #confirm="ngModel"></p>
+    <div *ngIf="confirm.invalid && (confirm.dirty || confirm.touched)" class="alert alert-danger">
+      <div>
+        <p style="color: red;">Confirmation password is required</p>
+      </div>
+    </div>
 
-    <p class="submit"><input type="submit" value="submit"></p>
+    <p class="submit"><input type="submit" value="submit" disabled></p>
   </form>
 </div>
