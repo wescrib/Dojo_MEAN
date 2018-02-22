@@ -13,17 +13,20 @@ export class UserCreateComponent implements OnInit {
   private user: User;
   private _router: Router
   errors: string[] = []
+  private test: any;
 
   constructor(
     _userService: UserService,
-    _router: Router
+    _router: Router,
   ) {
     this._userService = _userService;
-    this.user = new User 
+    this.user = new User()
     this._router = _router;
+
   }
 
   ngOnInit() {
+    // this.test = {"name" : "will"}
   }
 
   registerUser(){

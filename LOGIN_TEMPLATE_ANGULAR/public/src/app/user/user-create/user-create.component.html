@@ -1,5 +1,5 @@
 <div class="registration">
-  <form (submit)="registerUser()" name="registrationForm">
+  <form (submit)="registerUser()" name="registrationForm" #registerForm="ngForm">
     <p class="first_name"><label for="first_name">First Name: </label><input type="text" name="first_name" id="first_name" class="form-control" required minlength="2"[(ngModel)]="user.first_name" #fName="ngModel"></p>
     <div *ngIf="fName.invalid && (fName.dirty || fName.touched)" class="alert alert-danger">
       <div *ngIf="fName.errors.required">
@@ -30,13 +30,13 @@
       </div>
     </div>
     
-    <p class="password"><label for="password">Password: </label><input type="password" name="password" id="password" class="form-control" required [(ngModel)]="user.password" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{8,32}/" #password="ngModel"></p>
+    <p class="password"><label for="password">Password: </label><input type="password" name="password" id="password" class="form-control" required [(ngModel)]="user.password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{8,32}$" #password="ngModel"></p>
     <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
       <div *ngIf="password.errors.required">
           <p style="color: red;">Password is required</p>
       </div>
-      <div ng-show="registrationForm.$error.pattern">
-        <p>Password requires at least 1 capital letter and 1 number</p>
+      <div *ngIf="password.errors.pattern">
+        <p style="color: red;">Password requires at least 1 capital letter and 1 number, no special characters, and must be 8 - 32 characters</p>
       </div>
     </div>
 
@@ -46,7 +46,15 @@
         <p style="color: red;">Confirmation password is required</p>
       </div>
     </div>
-
-    <p class="submit"><input type="submit" value="submit" disabled></p>
+    <div *ngIf="user.password != user.confirm_pw">
+      <p style="color: red;">No Match</p>
+    </div>
+    <div *ngIf="user.password == user.confirm_pw && user.confirm_pw != null">
+      <p style="color:green">Match!</p>
+    </div>
+    <div *ngIf="registerForm.valid && user.password == user.confirm_pw">
+      <p class="submit"><input type="submit" value="submit"></p>
+    </div>
+    
   </form>
 </div>
